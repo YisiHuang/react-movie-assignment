@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "../headerMovieList";
 import FilterCard from "../filterMoviesCard";
-import MovieList from "../movieList";
+import PaginatedMovies from "../movieList";
 import Grid from "@mui/material/Grid";
 
 function MovieListPageTemplate({ movies, title, action }) {
@@ -35,7 +35,7 @@ function MovieListPageTemplate({ movies, title, action }) {
             genreFilter={genreFilter}
           />
         </Grid>
-        <MovieList action={action} movies={displayedMovies}></MovieList>
+        <PaginatedMovies action={action} movies={displayedMovies} moviesPerPage={7}></PaginatedMovies>
       </Grid>
     </Grid>
   );
