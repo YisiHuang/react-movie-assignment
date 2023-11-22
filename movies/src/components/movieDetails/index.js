@@ -9,6 +9,9 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
+import CardActions from "@mui/material/CardActions";
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 
 const root = {
@@ -21,7 +24,7 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const MovieDetails = ({ movie }) => {  // Don't miss this!
+const MovieDetails = ({ movie, action }) => {  // Don't miss this!
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -69,6 +72,13 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
             </li>
         ))}
       </Paper>
+      <CardActions disableSpacing>
+        <Link to={`/movies/${movie.id}/cast`}>
+          <Button variant="outlined" size="medium" color="secondary">
+            Cast List
+          </Button>
+        </Link>
+      </CardActions>
       <Fab
         color="secondary"
         variant="extended"
