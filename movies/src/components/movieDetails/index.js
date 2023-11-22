@@ -72,13 +72,18 @@ const MovieDetails = ({ movie, action }) => {  // Don't miss this!
             </li>
         ))}
       </Paper>
-      <CardActions disableSpacing>
-        <Link to={`/movies/${movie.id}/cast`}>
-          <Button variant="outlined" size="medium" color="secondary">
-            Cast List
-          </Button>
-        </Link>
+      <Paper 
+        component="ul" 
+        sx={{...root}}
+      >
+        <CardActions disableSpacing style={{justifyContent:"center"}}>
+        <li>
+          <Link to={`/movies/${movie.id}/cast`} style={{textDecoration:'none'}}>
+          <Button variant="contained" size="medium" style={{backgroundColor:'#9542bb'}}> Cast List </Button>
+          </Link>
+        </li>
       </CardActions>
+      </Paper>
       <Fab
         color="secondary"
         variant="extended"
