@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "../headerMovieList";
 import FilterCard from "../filterCrewCard";
-import CrewList from "../crewList";
+import PaginatedCrew from "../crewList";
 import Grid from "@mui/material/Grid";
 
 function CrewListPageTemplate({ crews, title, action }) {
@@ -28,7 +28,7 @@ function CrewListPageTemplate({ crews, title, action }) {
               crewFilter={nameFilter}
             />
           </Grid>
-          <CrewList action={action} crews={displayedCrews}></CrewList>
+          <PaginatedCrew action={action} crews={displayedCrews} crewsPerPage={11}></PaginatedCrew>
         </Grid>
       </Grid>
     );
