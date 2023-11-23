@@ -4,8 +4,8 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
-import img from '../../images/Search-Image.jpg'
 import CardMedia from "@mui/material/CardMedia";
+import img from '../../images/Search-Image.jpg'
 
 const formControl = 
   {
@@ -14,11 +14,11 @@ const formControl =
     backgroundColor: "rgb(255, 255, 255)"
   };
 
-export default function FilterCastCard(props) {
+export default function FilterCrewCard(props) {
 
   const handleChange = (e, type, value) => {
     e.preventDefault();
-    props.onUserInput(type, value);
+    props.onUserInput(type, value); 
   };
 
   const handleTextChange = (e, props) => {
@@ -35,12 +35,12 @@ export default function FilterCastCard(props) {
       <CardContent>
         <Typography variant="h6" component="h1">
           <SearchIcon fontSize="large" />
-          Search In Cast
+          Search In Crew
         </Typography>
         <TextField
           sx={{...formControl}}
           id="filled-search"
-          label="Input Actor Name"
+          label="Input Crew Name"
           type="search"
           variant="filled"
           value={props.actorFilter}

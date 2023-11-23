@@ -36,7 +36,7 @@ const CrewListPage = (props) => {
 
   return (
     <PageTemplate
-      title='Crew'
+      title='Crew List'
       crews={crews}
     />
   );
