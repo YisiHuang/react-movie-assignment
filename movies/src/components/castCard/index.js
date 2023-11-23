@@ -23,7 +23,7 @@ export default function CastCard({ cast }) {
         title={
             <CardActions disableSpacing style={{justifyContent:"center"}}>
             <Typography variant="h7" component="p" align="center" style={{justifyContent:"center"}}>
-            <Link to={`/person/${cast.id}`} style={{ textDecoration: 'none', fontSize: '0.75em', justifyContent:"center", color:'#ac00e6'}}>
+            <Link to={`/person/${cast.id}`} style={{ textDecoration: 'none', fontSize: '0.75em', justifyContent:"center", color:'#2c2f3b'}}>
                 {cast.name}{" "}
               </Link>
             </Typography>

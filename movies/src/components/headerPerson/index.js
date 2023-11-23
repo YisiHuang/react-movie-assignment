@@ -25,8 +25,8 @@ const PersonHeader = (props) => {
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
 
-      <Typography variant="h3" component="h3">
-        {person.name}
+      <Typography variant="h4" component="h3">
+        People Details
       </Typography>
 
       <IconButton aria-label="go forward" onClick={() => navigate(+1) } >

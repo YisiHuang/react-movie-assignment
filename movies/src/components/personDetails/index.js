@@ -23,7 +23,7 @@ const PersonDetails = ({ person }) => {
     <>
       <Typography variant="h4" component="h3"  style={{paddingBottom: '1em'}}>
       {person.biography ?
-          'Introduction:'
+          person.name
         : `No Biography found for ${person.name}` }
       </Typography>
 
