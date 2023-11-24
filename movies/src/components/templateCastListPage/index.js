@@ -6,14 +6,19 @@ import Grid from "@mui/material/Grid";
 
 function CastListPageTemplate({ casts, title, action }) {
     const [nameFilter, setNameFilter] = useState("");
+    const [isSorted, setIsSorted] = useState(false);
 
-  let displayedCasts = casts
-    .filter((c) => {
-      return c.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
-    });
+    let displayedCasts = isSorted
+    ? [...casts].sort((a, b) => a.name.localeCompare(b.name))
+    : casts;
+
+  displayedCasts = displayedCasts.filter((c) => {
+    return c.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
+  });
 
   const handleChange = (type, value) => {
     if (type === "name") setNameFilter(value);
+    else if (type === "sort") setIsSorted(value);
   };
 
   return (
@@ -26,9 +31,11 @@ function CastListPageTemplate({ casts, title, action }) {
           <FilterCard
             onUserInput={handleChange}
             titleFilter={nameFilter}
+            isSorted={isSorted}
+            onSortChange={(value) => handleChange('sort', value)}
           />
         </Grid>
-        <PaginatedCast action={action} casts={displayedCasts} castsPerPage={11}></PaginatedCast>
+        <PaginatedCast action={action} casts={displayedCasts} castsPerPage={11} isSorted={isSorted}></PaginatedCast>
       </Grid>
     </Grid>
   );

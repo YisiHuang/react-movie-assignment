@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Cast from "../castCard";
 import Grid from "@mui/material/Grid";
 import ReactPaginate from 'react-paginate';
@@ -13,15 +13,24 @@ const CastList = ( {casts, action }) => {
   return castCards;
 };
 
-const PaginatedCast = ({ casts, castsPerPage, action })  => {
+const PaginatedCast = ({ casts, castsPerPage, action, isSorted })  => {
     const [castOffset, setCastOffset] = useState(0);
+    const [sortedCasts, setSortedCasts] = useState([]);
+
+    useEffect(() => {
+      if (isSorted) {
+        setSortedCasts([...casts].sort((a, b) => a.name.localeCompare(b.name)));
+      } else {
+        setSortedCasts(casts);
+      }
+    }, [casts, isSorted]);
   
     const endOffset = castOffset + castsPerPage;
-    const currentCast = casts.slice(castOffset, endOffset);
-    const pageCount = Math.ceil(casts.length / castsPerPage);
+    const currentCast = isSorted ? sortedCasts.slice(castOffset, endOffset) : casts.slice(castOffset, endOffset);
+    const pageCount = Math.ceil((isSorted ? sortedCasts : casts).length / castsPerPage);
   
     const handlePageClick = (event) => {
-      const newOffset = (event.selected * castsPerPage) % casts.length;
+      const newOffset = (event.selected * castsPerPage) % (isSorted ? sortedCasts.length : casts.length);
       setCastOffset(newOffset);
     };
   

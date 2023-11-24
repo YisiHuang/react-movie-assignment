@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -6,6 +6,8 @@ import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import img from '../../images/Search-Image.jpg'
 import CardMedia from "@mui/material/CardMedia";
+import Switch from "@mui/material/Switch"; 
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 const formControl = 
   {
@@ -15,6 +17,7 @@ const formControl =
   };
 
 export default function FilterCastCard(props) {
+  const [isSorted, setIsSorted] = useState(false);
 
   const handleChange = (e, type, value) => {
     e.preventDefault();
@@ -24,6 +27,13 @@ export default function FilterCastCard(props) {
   const handleTextChange = (e, props) => {
     handleChange(e, "name", e.target.value);
   };
+
+  const toggleSort = (event) => {
+    setIsSorted(event.target.checked); 
+    if (typeof props.onSortChange === 'function') {
+      props.onSortChange(event.target.checked);
+    }
+  }
 
   return (
     <Card 
@@ -47,11 +57,16 @@ export default function FilterCastCard(props) {
           onChange={handleTextChange}
         />
       </CardContent>
+      <FormControlLabel
+          control={<Switch checked={isSorted} onChange={toggleSort} />}
+          label="Sort Alphabetically" 
+        />
       <CardMedia
         sx={{ height: 150 }}
         image={img}
         title="Filter"
       />
+      
     </Card>
   );
 }
