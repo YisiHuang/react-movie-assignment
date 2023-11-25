@@ -21,6 +21,7 @@ import Login from "./components/login/Login";
 import Register from "./components/Register/Register";
 import Reset from "./components/Reset/Reset";
 import Dashboard from "./components/Dashboard/Dashboard";
+import TopRatedTVPage from "./pages/topRatedTVPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -56,6 +57,7 @@ const App = () => {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/reset" element={<Reset />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
+          <Route path="/tv/top_rated" element={ <TopRatedTVPage /> } />
         </Routes>
         </MoviesContextProvider>
       </BrowserRouter>
