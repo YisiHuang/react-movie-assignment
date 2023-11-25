@@ -17,6 +17,10 @@ import NowPlayingPage from "./pages/nowPlayingPage";
 import CastListPage from "./pages/castListPage";
 import CrewListPage from "./pages/crewListPage";
 import PersonPage from "./pages/personDetailsPage";
+import Login from "./components/login/Login";
+import Register from "./components/Register/Register";
+import Reset from "./components/Reset/Reset";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -48,6 +52,10 @@ const App = () => {
           <Route path="/movies/:id/cast" element={<CastListPage />} />
           <Route path="/movies/:id/crew" element={<CrewListPage />} />
           <Route path="/person/:id" element={<PersonPage />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/register" element={<Register />} />
+          <Route exact path="/reset" element={<Reset />} />
+          <Route exact path="/dashboard" element={<Dashboard />} />
         </Routes>
         </MoviesContextProvider>
       </BrowserRouter>
